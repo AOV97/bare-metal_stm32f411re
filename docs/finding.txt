@@ -1,0 +1,2 @@
+To flash the stm with a new binary:
+    st-flash --reset write <binary_name.bin> 0x8000000 
