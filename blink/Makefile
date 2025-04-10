@@ -7,7 +7,7 @@ endif
 
 SRC_DIR        = src
 INC_DIR        = inc
-OPENCM3_DIR    = ../../bare-metal-series/libopencm3
+OPENCM3_DIR    = ../libopencm3
 
 BINARY = main
 
