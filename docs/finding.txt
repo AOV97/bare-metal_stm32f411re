@@ -17,4 +17,13 @@ About RCC:
         HSE: High Speed External 4-to-26 MHz crystal oscillator
         HSI: High Speed Internal 16 Mhz 
 
-PWM and Timers
+PWM and Timers:
+    PWM is a wave. We can create this with a specific frequency.
+        Period
+            the number at which the start of pulse up to the next start of the pulse
+        Duty cycle:
+            percentage of when its high and low
+
+        A period can be the same but the duty cycle can be different.
+
+        

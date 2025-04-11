@@ -1,9 +1,21 @@
 {
   "configurations": [
     {
-      "name": "ST-Link: Debug Application",
+      "name": "ST-Link: Debug Blink",
       "cwd": "${workspaceFolder}/blink",
       "executable": "./main.elf",
+      "servertype": "stutil",
+      "request": "launch",
+      "type": "cortex-debug",
+      "device": "STM32F411RE",
+      "runToEntryPoint": "main",
+      "interface": "swd",
+      "preLaunchTask": "build_debug"
+    },
+    {
+      "name": "ST-Link: Debug pwm_timer",
+      "cwd": "${workspaceFolder}/pwm_timer",
+      "executable": "./firmware.elf",
       "servertype": "stutil",
       "request": "launch",
       "type": "cortex-debug",
@@ -25,7 +37,7 @@
     //   "preLaunchTask": "build_bootloader"
     // },
     {
-      "name": "ST-Link: Attach to Application",
+      "name": "ST-Link: Attach to Blink",
       "cwd": "${workspaceFolder}/blink",
       "executable": "./main.elf",
       "servertype": "stutil",
@@ -34,17 +46,17 @@
       "device": "STM32F411RE",
       "runToEntryPoint": "main",
       "interface": "swd"
+    },
+    {
+      "name": "ST-Link: Attach to pwm_timer",
+      "cwd": "${workspaceFolder}/pwm_timer",
+      "executable": "./firmware.elf",
+      "servertype": "stutil",
+      "request": "attach",
+      "type": "cortex-debug",
+      "device": "STM32F411RE",
+      "runToEntryPoint": "main",
+      "interface": "swd"
     }
-    // {
-    //   "name": "ST-Link: Attach to Bootloader",
-    //   "cwd": "${workspaceFolder}/bootloader",
-    //   "executable": "./bootloader.elf",
-    //   "servertype": "stutil",
-    //   "request": "attach",
-    //   "type": "cortex-debug",
-    //   "device": "STM32F401RE",
-    //   "runToEntryPoint": "main",
-    //   "interface": "swd"
-    // }
   ]
 }
