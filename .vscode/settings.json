@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "vector.h": "c",
+        "gpio.h": "c"
+    },
+    "cortex-debug.gdbPath": "/usr/bin/gdb-multiarch",
+    "cortex-debug.stutilPath": "/usr/bin/st-util"
+}

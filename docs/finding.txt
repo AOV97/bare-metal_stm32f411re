@@ -16,3 +16,5 @@ About RCC:
     To main sources for the PLL:
         HSE: High Speed External 4-to-26 MHz crystal oscillator
         HSI: High Speed Internal 16 Mhz 
+
+PWM and Timers
