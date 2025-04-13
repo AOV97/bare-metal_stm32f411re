@@ -26,4 +26,11 @@ PWM and Timers:
 
         A period can be the same but the duty cycle can be different.
 
+Simplest Bootloader:
+    Bootloader: 
+        is the first code that will run to init and load the next program
+        sometimes in an unmodifiable ROM
+        Loads and/or jumps to the next code to run
+        somtimes verifies the code to be run
+        
         
