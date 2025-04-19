@@ -33,4 +33,23 @@ Simplest Bootloader:
         Loads and/or jumps to the next code to run
         somtimes verifies the code to be run
         
-        
+Arm:
+    arm-none-eabi-objdump -D <elf file> > asm-dump
+
+UART Driver:
+    Uart is a serial protocol.
+    No clock line
+    Start bit and a stop bit.
+    10 bits: 2 bit for start and stop and 8 bits of data data.
+    Can have a parity bit.
+    
+    Tx - Rx
+    Rx - Tx
+
+    Baud rate = bit periods /second
+    For a baud rate of 115200:
+    E.G:
+        11520 bytes / seconds (~11.5 KiB/S)
+        Full firmware image: 480 KiB
+        Max transfer time: ~42 seconds
+    
