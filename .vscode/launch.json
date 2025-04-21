@@ -24,18 +24,30 @@
       "interface": "swd",
       "preLaunchTask": "build_debug"
     },
-    // {
-    //   "name": "ST-Link: Debug Bootloader",
-    //   "cwd": "${workspaceFolder}/bootloader",
-    //   "executable": "./bootloader.elf",
-    //   "servertype": "stutil",
-    //   "request": "launch",
-    //   "type": "cortex-debug",
-    //   "device": "STM32F401RE",
-    //   "runToEntryPoint": "main",
-    //   "interface": "swd",
-    //   "preLaunchTask": "build_bootloader"
-    // },
+    {
+      "name": "ST-Link: Debug app",
+      "cwd": "${workspaceFolder}/app",
+      "executable": "./firmware.elf",
+      "servertype": "stutil",
+      "request": "launch",
+      "type": "cortex-debug",
+      "device": "STM32F411RE",
+      "runToEntryPoint": "main",
+      "interface": "swd",
+      "preLaunchTask": "build_debug"
+    },
+    {
+      "name": "ST-Link: Launch Application",
+      "cwd": "${workspaceFolder}/app",
+      "executable": "./firmware.elf",
+      "servertype": "stutil",
+      "request": "launch",
+      "type": "cortex-debug",
+      "device": "STM32F411RE",
+      "runToEntryPoint": "main",
+      "interface": "swd",
+      "preLaunchTask": "build_app"
+    },
     {
       "name": "ST-Link: Attach to Blink",
       "cwd": "${workspaceFolder}/blink",
@@ -50,6 +62,17 @@
     {
       "name": "ST-Link: Attach to pwm_timer",
       "cwd": "${workspaceFolder}/pwm_timer",
+      "executable": "./firmware.elf",
+      "servertype": "stutil",
+      "request": "attach",
+      "type": "cortex-debug",
+      "device": "STM32F411RE",
+      "runToEntryPoint": "main",
+      "interface": "swd"
+    },
+    {
+      "name": "ST-Link: Attach to app",
+      "cwd": "${workspaceFolder}/app",
       "executable": "./firmware.elf",
       "servertype": "stutil",
       "request": "attach",

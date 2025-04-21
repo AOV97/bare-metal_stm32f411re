@@ -62,3 +62,12 @@ UART Driver:
 
         To exit out of screen:
             >Ctrl + A
+
+Series 6:
+    Understanding the ring buffer data structure, and how it solves the race condition issues in uart.c where we have a variable data_available.
+
+    Ring Buffer:
+        AKA circular buffer
+        Basically, a buffer that wraps back around when you get to the end
+        Can be seen as having two seperate interfaces; one for read, and one for writing
+        In a single producer/signle consumer model, it gives us certain guarantees.

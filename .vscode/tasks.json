@@ -20,6 +20,15 @@
       },
       "command": "make bin",
       "problemMatcher": "$gcc"
+    },
+    {
+      "type": "shell",
+      "label": "build_app",
+      "options": {
+        "cwd": "app"
+      },
+      "command": "make bin",
+      "problemMatcher": "$gcc"
     }
   ]
 }

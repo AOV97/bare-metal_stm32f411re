@@ -3,11 +3,13 @@
 #include <libopencm3/cm3/nvic.h>
 
 #include "core/uart.h"
+#include "core/ring-buffer.h"
 
 #define BAUD_RATE (115200)
+#define RING_BUFFER_SIZE (128) //for maximum of ~10ms of latency
 
-static uint8_t data_buffer = 0u;
-static bool data_available = false;
+static ring_buffer_t rb = {0u};
+static uint8_t data_buffer[RING_BUFFER_SIZE] = {0U};
 
 void usart2_isr(void)
 {
@@ -16,13 +18,17 @@ void usart2_isr(void)
 
     if(recieved_data || overrun_occurred)
     {
-        data_buffer = (uint8_t)usart_recv(USART2);
-        data_available = true;
+        if(!ring_buffer_write(&rb, (uint8_t)usart_recv(USART2)))
+        {
+            //Handler failure;
+        }
     }
 }
 
 void uart_setup(void)
 {
+    ring_buffer_setup(&rb, data_buffer, RING_BUFFER_SIZE);
+
     rcc_periph_clock_enable(RCC_USART2);
 
     usart_set_mode(USART2, USART_MODE_TX_RX);
@@ -59,22 +65,32 @@ void uart_write_byte(uint8_t data)
 
 uint32_t uart_read(uint8_t *data, const uint32_t lenght)
 {
-    if(lenght > 0 && data_available)
+    if(lenght == 0)
     {
-        *data = data_buffer;
-        data_available = false;
-        return 1;
+        return 0;
     }
-    return 0;
+
+    for(uint32_t bytes_read = 0; bytes_read < lenght; bytes_read++)
+    {
+        if( !ring_buffer_read(&rb, &data[bytes_read]) )
+        {
+            return bytes_read;
+        }
+    }
+
+    return lenght;
 }
 
 uint8_t uart_read_byte(void)
 {
-    data_available = false;
-    return data_buffer;
+    uint8_t byte = 0;
+    //explicitly saying don't if our read is sucessful
+    //It should be the user who handles this
+    (void) uart_read(&byte, 1);
+    return byte;
 }
 
 bool uart_data_available(void)
 {
-    return data_available;
+    return !ring_buffer_empty(&rb);
 }
