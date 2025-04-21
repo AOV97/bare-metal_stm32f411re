@@ -53,3 +53,12 @@ UART Driver:
         Full firmware image: 480 KiB
         Max transfer time: ~42 seconds
     
+    Using the stm-link we don't have to connect with an external uart cable. Because it has a Virtual Com Port (VCP).
+        > dmesg | grep tty
+            ttyACM0
+
+    To test run the following
+        >sudo screen /dev/ttyACM0 115200 8N1
+
+        To exit out of screen:
+            >Ctrl + A
